@@ -11,13 +11,13 @@ servers:
 paths:
   /people:
     get:
-      operationId: "people.read_all"
+      operationId: "src.routes.people.read_all"
       summary: "Read the list of people"
       responses:
         "200":
           description: "Successfully read people list"
     post:
-      operationId: "people.create"
+      operationId: "src.routes.people.create"
       summary: "Create new people"
       requestBody:
         description: "Person to create"
@@ -32,7 +32,7 @@ paths:
           description: "Successfully created person"
   /people/{lname}:
     get:
-      operationId: "people.read_one"
+      operationId: "src.routes.people.read_one"
       summary: "Read one person"
       parameters:
         - $ref: "#/components/parameters/lname"
@@ -40,7 +40,7 @@ paths:
         "200":
           description: "Successfully read person"
     put:
-      operationId: "people.update"
+      operationId: "src.routes.people.update"
       summary: "Update people"
       parameters:
         - $ref: "#/components/parameters/lname"
@@ -56,7 +56,7 @@ paths:
         "200":
           description: "Successfully updated person"
     delete:
-      operationId: "people.remove"
+      operationId: "src.routes.people.remove"
       summary: "Remove people"
       parameters:
         - $ref: "#/components/parameters/lname"
