@@ -30,12 +30,12 @@ paths:
       responses:
         "201":
           description: "Successfully created person"
-  /people/{lname}:
+  /people/{id}:
     get:
       operationId: "src.routes.people.read_one"
       summary: "Read one person"
       parameters:
-        - $ref: "#/components/parameters/lname"
+        - $ref: "#/components/parameters/id"
       responses:
         "200":
           description: "Successfully read person"
@@ -43,7 +43,7 @@ paths:
       operationId: "src.routes.people.update"
       summary: "Update people"
       parameters:
-        - $ref: "#/components/parameters/lname"
+        - $ref: "#/components/parameters/id"
       requestBody:
         description: "Person to update"
         required: true
@@ -59,7 +59,7 @@ paths:
       operationId: "src.routes.people.remove"
       summary: "Remove people"
       parameters:
-        - $ref: "#/components/parameters/lname"
+        - $ref: "#/components/parameters/id"
       responses:
         "200":
           description: "Seccessfully removed person"
@@ -77,10 +77,10 @@ components:
         lname:
           type: string
   parameters:
-    lname:
-      name: "lname"
-      description: "Last name of person"
+    id:
+      name: "id"
+      description: "Person Id"
       in: path
       required: true
       schema:
-        type: string
+        type: number

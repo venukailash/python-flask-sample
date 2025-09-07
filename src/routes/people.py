@@ -13,24 +13,24 @@ def create(person):
     except ValueError as e:
         abort(406, e.args)
     
-def read_one(lname):
+def read_one(id):
     try:
-        person = PersonService.read_one(lname=lname)
+        person = PersonService.read_one(id=id)
         return person_schema.dump(person)
     except ValueError as e:
         abort(404, e.args)
 
-def update(lname, person):
+def update(id, person):
     try:
         person_to_update = person_schema.load(person)
-        updated_person = PersonService.update(lname=lname, person=person_to_update)
+        updated_person = PersonService.update(id=id, person=person_to_update)
         return person_schema.dump(updated_person)
     except ValueError as e:
         abort(404, e.args)
 
-def remove(lname):
+def remove(id):
     try:
-        PersonService.remove(lname=lname)
-        return f"Person {lname} deleted", 200
+        PersonService.remove(id=id)
+        return f"Person {id} deleted", 200
     except ValueError as e:
         abort(404, e.args)
