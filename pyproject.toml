@@ -1,0 +1,10 @@
+[project]
+name = "python-flask-sample"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.8.19"
+dependencies = [
+    "connexion[flask,swagger-ui,uvicorn]>=3.2.0",
+    "flask>=3.0.3",
+]
