@@ -1,4 +1,4 @@
-from config import db, ma
+from extensions import db, ma
 from src.models.note import Note
 
 class NoteSchema(ma.SQLAlchemyAutoSchema):

@@ -1,14 +1,31 @@
+import connexion
+import pathlib
+
 from flask import render_template
-import config
+from extensions import db, ma
 from src.models.person import Person
 
-app = config.connex_app
-app.add_api("swagger.yml")
+basedir = pathlib.Path(__file__).parent.resolve()
 
-@app.route("/")
-def home():
-    people = Person.query.all()
-    return render_template("home.html", people=people)
+def create_app():
+    connex_app = connexion.App(__name__, specification_dir=basedir)
+    app = connex_app.app
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=True)
+    app.config["SQLALCHEMY_DATABASE_URI"]=f"sqlite:///{basedir}/people.db"
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+    db.init_app(app)
+    ma.init_app(app)
+
+    connex_app.add_api('swagger.yml')
+
+    @app.route("/favicon.ico")
+    def favicon():
+        return "", 204
+
+    @app.route("/")
+    def home():
+        people = Person.query.all()
+        return render_template("home.html", people=people)
+
+    return connex_app

@@ -1,4 +1,4 @@
-from config import db
+from extensions import db
 from src.models.person import Person
 from sqlalchemy.exc import DBAPIError
 

@@ -1,7 +1,7 @@
 from src.models.person import Person
 from marshmallow_sqlalchemy import fields
 from src.schemas.note_schema import NoteSchema
-from config import db, ma
+from extensions import db, ma
 
 class PersonSchema(ma.SQLAlchemyAutoSchema):
     class Meta:

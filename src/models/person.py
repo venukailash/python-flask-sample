@@ -1,6 +1,6 @@
 from datetime import datetime
-from config import db
-from src.models.note import Note
+from extensions import db
+from .note import Note
 
 class Person(db.Model):
     __tablename__ = "person"

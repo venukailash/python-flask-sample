@@ -1,5 +1,5 @@
 from datetime import datetime
-from config import db
+from extensions import db
 
 class Note(db.Model):
     __tableName__ = "note"
