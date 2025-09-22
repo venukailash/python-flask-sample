@@ -3,7 +3,7 @@ import logging
 
 basedir = pathlib.Path(__file__).parent.resolve()
 class DefaultConfig:
-        SQLALCHEMY_DATABASE_URI=f"sqlite:///{basedir}/people.db"
+        SQLALCHEMY_DATABASE_URI=f"sqlite:///{basedir}/user.db"
         SQLALCHEMY_TRACK_MODIFICATIONS=False
 
         def __init__(self):

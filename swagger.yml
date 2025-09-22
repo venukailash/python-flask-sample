@@ -1,86 +1,19 @@
 # yaml-language-server: $schema=https://json-schema.org/draft/2020-12/schema
 openapi: 3.0.3
 info:
-  title: "Sample Flask REST API"
-  description: "An API about people and notes"
+  title: "User Service API"
+  description: "User Service API"
   version: "1.0.0"
 
 servers:
   - url: "/api"
 
 paths:
-  /people:
+  /user:
     get:
-      operationId: "src.routes.people.read_all"
-      summary: "Read the list of people"
+      operationId: "src.routes.user.read_all"
+      summary: "Read the list of users"
       responses:
         "200":
-          description: "Successfully read people list"
-    post:
-      operationId: "src.routes.people.create"
-      summary: "Create new people"
-      requestBody:
-        description: "Person to create"
-        required: true
-        x-body-name: "person"
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/person"
-      responses:
-        "201":
-          description: "Successfully created person"
-  /people/{id}:
-    get:
-      operationId: "src.routes.people.read_one"
-      summary: "Read one person"
-      parameters:
-        - $ref: "#/components/parameters/id"
-      responses:
-        "200":
-          description: "Successfully read person"
-    put:
-      operationId: "src.routes.people.update"
-      summary: "Update people"
-      parameters:
-        - $ref: "#/components/parameters/id"
-      requestBody:
-        description: "Person to update"
-        required: true
-        x-body-name: "person"
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/person"
-      responses:
-        "200":
-          description: "Successfully updated person"
-    delete:
-      operationId: "src.routes.people.remove"
-      summary: "Remove people"
-      parameters:
-        - $ref: "#/components/parameters/id"
-      responses:
-        "200":
-          description: "Seccessfully removed person"
-
-components:
-  schemas:
-    person:
-      type: object
-      required: 
-       - fname
-       - lname
-      properties:
-        fname:
-          type: string
-        lname:
-          type: string
-  parameters:
-    id:
-      name: "id"
-      description: "Person Id"
-      in: path
-      required: true
-      schema:
-        type: number
+          description: "Successfully read user list"
+    

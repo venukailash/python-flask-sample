@@ -1,7 +1,7 @@
 import pytest
 from app import create_app
 from extensions import db as _db
-from src.models.person import Person
+from src.models.user import User
 
 @pytest.fixture
 def app():
@@ -17,8 +17,8 @@ def client(app):
     return app.test_client()
 
 @pytest.fixture
-def setOnePerson(app):
+def setOneUser(app):
     with app.app.app_context():
-        person = Person(fname="john", lname="doe")
-        _db.session.add(person)
+        user = User(email="v@b.com", first_name="john", last_name="doe")
+        _db.session.add(user)
         _db.session.commit()
