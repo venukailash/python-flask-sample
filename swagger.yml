@@ -16,4 +16,23 @@ paths:
       responses:
         "200":
           description: "Successfully read user list"
-    
+  /user/{email}:
+    get:
+      operationId: "src.routes.user.get_one"  
+      summary: "Get user detail based on email ID"
+      parameters:
+        - $ref: '#components/parameters/email'
+      responses:
+        "200":
+          description: "Successfully read user"
+
+components:
+  parameters:
+    email:
+      name: "email"
+      description: "Email ID"
+      in: path
+      required: true
+      schema:
+        type: string
+        format: email
